@@ -1,0 +1,117 @@
+# Michael Sebastian Dahn
+#
+#
+# August 21, 2022
+#--------------------------------------------------------------------------------------------------
+#
+#                                      Pico Synthesizer Heirarchy
+#
+#
+# Master Pico:
+#    a.) import libraries:
+#         from machine import Pin, UART;    for pico gpio pins and uart communication
+#         import math;                      for waveform generation
+#         import random;                    for white noise generation
+#
+#
+#    b.) set pins:
+#         00 - UART 0 TX
+#         01 - UART 0 RX
+#         02 - Rotary Encoder Button Press
+#         03 - Menu 1 LED
+#         04 - Menu 2 LED
+#         05 - Menu 3 LED
+#         06 - Menu 1 Button
+#         07 - Rotary Encoder Step Pin
+#         08 - Digit 1 Dot
+#         09 - Digit 1 Bottom Right
+#         10 - Digit 1 Bottom
+#         11 - Digit 1 Bottom Left
+#         12 - Rotary Encoder Direction Pin
+#         13 - Digit 2 Bottom Right
+#         14 - Digit 2 Bottom
+#         15 - Digit 2 Bottom Left
+#         16 - Digit 2 Middle
+#         17 - Digit 2 Top Left
+#         18 - Digit 2 Top
+#         19 - Digit 2 Top Right
+#         20 - Digit 1 Middle
+#         21 - Digit 1 Top Left
+#         22 - Digit 1 Top
+#         23 - //DNE//
+#         24 - //DNE//
+#         25 - //DNE//
+#         26 - Digit 1 Top Right
+#         27 - Menu 2 Button
+#         28 - Menu 3 Button
+#
+#           * All digit pins are together in list Pins
+#
+#
+#    c.) Chars:
+#         matrix of 2 digit numbers 00 - 99 on seven segment displays
+#
+#    d.)  def Oscillators:
+#         sine_wave:
+#           amplitude*sin(x)
+#         square:
+#           amplitude*
+#         sawtooth:
+#           amplitude*
+#         triange:
+#           amplitude*
+#
+#    e.) def num_select_patch:
+#         global patch_val
+#         range 01-99
+#         display patch_val on Seven Segment Display
+#
+#    f.) def num_select_edit:
+#         global edit_val
+#         range 01-99
+#         display edit_val on Seven Segment Display
+#
+#    g.) def num_select_volume:
+#         global volume_val
+#         range 01-10
+#         display volume_val on Seven Segment Display
+#
+#    h.) initialize variables:
+#         previous_value  = True
+#         button_down = False
+#         patch_val = 1
+#         edit_val = 1
+#         volume_val = 1
+#         l1.off()
+#         l2.off()
+#
+#    i.) def menu_select:
+#         global b1, b2, b3, l1, l2, l3
+#         global menu_num
+#         global midi_amp
+#         while menu_num == 1:
+#            num_select_patch
+#
+#         while menu_num == 2:
+#            num_select_edit
+#
+#         while menu_num == 3:
+#            num_select_volume
+#            midi_amp = volume/10                   ;Scales waveforms to amplitude 0-1
+#
+#    j.) def uart_read:
+#         global mtof
+#         uart0 = UART(0, 115200)
+#         if uart.any() > 0:
+#            data = uart0.read()
+#            if {} in data:
+#               note_read = {}
+#               mtof = float(440*2^((note_read - 69)/12))
+#               
+#
+#    k.) def main:
+#         menu_select()
+#         uart0.irq(uart_read)
+#
+#    l.)  // Add limiter to scal
+
